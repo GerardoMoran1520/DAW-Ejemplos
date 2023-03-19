@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+	<title>SweetAlert</title>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+	<br>
+<input type="button" value="Depositar"   class="btn btn-primary" onclick="Swal.fire( 'Lo sentimos','Ocurrió un problema con el deposito', 
+'error')">
+<input type="button" Value="Pagar"  class="btn btn-primary"  onclick="
+const swalWithBootstrapButtons = Swal.mixin({
+  customClass: {
+    confirmButton: 'btn btn-success',
+
+
+    cancelButton: 'btn btn-danger'
+  },
+  buttonsStyling: false
+})
+
+swalWithBootstrapButtons.fire({
+  title: 'Estás seguro de realizar el pago?',
+  text: 'Después no podras realizar ningun cambio!',
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonText: 'Sí, Comfirmar Pago!',
+  cancelButtonText: 'No, Cancelar!',
+  reverseButtons: true
+}).then((result) => {
+  if (result.isConfirmed) {
+    swalWithBootstrapButtons.fire(
+      'Completado!',
+      'Tu pago se realizo con exito!',
+      'success'
+    )
+  } else if (
+    /* Read more about handling dismissals below */
+    result.dismiss === Swal.DismissReason.cancel
+  ) {
+    swalWithBootstrapButtons.fire(
+      'Cancelado',
+      'Tu pago no sé realizo',
+      'error'
+    )
+  }
+})
+">
+</body>
+</html>
